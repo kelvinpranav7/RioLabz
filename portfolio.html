@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Engineering Case Studies | RIOLABZ Technologies</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#6366F1",
+                        "surface-container-lowest": "#FFFFFF",
+                        "tertiary": "#8B5CF6",
+                        "on-error-container": "#93000a",
+                        "secondary": "#6366F1",
+                        "background": "#FAFBFC",
+                        "on-tertiary-fixed-variant": "#ffffff",
+                        "on-primary-container": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#111827",
+                        "secondary-fixed": "#6366F1",
+                        "surface-container": "#F5F7FA",
+                        "primary-container": "#2563EB",
+                        "on-secondary-fixed": "#ffffff",
+                        "primary": "#2563EB",
+                        "surface-bright": "rgba(255, 255, 255, 0.9)",
+                        "on-secondary-fixed-variant": "#ffffff",
+                        "inverse-on-surface": "#ffffff",
+                        "on-background": "#111827",
+                        "on-primary-fixed-variant": "#ffffff",
+                        "surface-tint": "#2563EB",
+                        "inverse-primary": "#2563EB",
+                        "surface-variant": "rgba(0, 0, 0, 0.02)",
+                        "outline-variant": "#E5E7EB",
+                        "surface-container-low": "#FFFFFF",
+                        "primary-fixed": "#2563EB",
+                        "surface-container-highest": "#E5E7EB",
+                        "secondary-container": "#6366F1",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#8B5CF6",
+                        "surface-dim": "rgba(0, 0, 0, 0.01)",
+                        "primary-fixed-dim": "#2563EB",
+                        "on-surface": "#111827",
+                        "surface-container-high": "#F5F7FA",
+                        "tertiary-fixed": "#8B5CF6",
+                        "on-error": "#ffffff",
+                        "surface": "#FFFFFF",
+                        "outline": "#E5E7EB",
+                        "on-surface-variant": "#4B5563",
+                        "on-secondary-container": "#ffffff",
+                        "on-tertiary-container": "#ffffff",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-primary-fixed": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#8B5CF6",
+                        "on-secondary": "#ffffff",
+                        "brand-gold": "#D4AF37",
+                        "luxury-gold": "#D4AF37",
+                        "luxury-gold-dark": "#B8860B"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --color-primary: #2563EB;
+            /* Primary Brand (Blue) */
+            --color-secondary: #6366F1;
+            /* Secondary Brand (Indigo/Violet) */
+            --color-tertiary: #8B5CF6;
+            /* Accent Highlight (Purple) */
+            --color-luxury-gold: #D4AF37;
+            /* Accent Gold */
+            --bg-primary: #FAFBFC;
+            --bg-secondary: #FFFFFF;
+            --text-primary: #475569;
+            /* Body */
+            --text-secondary: #64748B;
+            /* Secondary */
+            --text-muted: #94A3B8;
+            /* Muted */
+            --border-color: #E2E8F0;
+            --border-hover: #CBD5E1;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Global Light Theme Typography Overrides */
+        h1 {
+            color: #0F172A !important;
+            /* Headlines */
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #111827 !important;
+            /* Section / Card Titles */
+        }
+
+        nav a,
+        footer a {
+            color: #64748B;
+        }
+
+        nav a:hover,
+        footer a:hover {
+            color: var(--color-primary) !important;
+        }
+
+        nav a.font-display-lg,
+        footer a.font-display-lg {
+            color: #0F172A !important;
+        }
+
+        .animate-marquee div {
+            color: #64748B !important;
+        }
+
+        .animate-marquee span {
+            color: #64748B !important;
+        }
+
+        .text-on-surface-variant {
+            color: #64748B !important;
+        }
+
+        .text-on-surface {
+            color: #111827 !important;
+        }
+
+        .bg-white\/5 {
+            background-color: #F3F4F6 !important;
+        }
+
+        .border-white\/10,
+        .border-white\/5 {
+            border-color: #E2E8F0 !important;
+        }
+
+        .border-t.border-white\/5 {
+            border-color: #E2E8F0 !important;
+        }
+
+        strong.text-white {
+            color: #111827 !important;
+        }
+
+        div.text-white:not(button *):not(a *):not([class*="bg-"]):not([class*="bg-primary"]):not([class*="bg-secondary"]),
+        span.text-white:not(button *):not(a *):not([class*="bg-"]):not(.bg-gradient-to-r):not(.bg-primary):not(.bg-secondary) {
+            color: #475569 !important;
+        }
+
+        #mobile-menu-btn,
+        #mobile-menu-close {
+            color: #111827 !important;
+        }
+
+        input[type="email"] {
+            background-color: #FFFFFF !important;
+            border: 1px solid #E2E8F0 !important;
+            color: #0F172A !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        input[type="email"]::placeholder {
+            color: #94A3B8 !important;
+        }
+
+        input[type="email"]:focus {
+            border-color: var(--color-primary) !important;
+            outline: none !important;
+        }
+
+        section div[class*="bg-[radial-gradient"] {
+            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.04), transparent 70%) !important;
+        }
+
+        div[class*="bg-gradient-to-t"][class*="from-[#07050f]"] {
+            background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.1) 100%) !important;
+        }
+
+        div[class*="bg-gradient-to-t"][class*="from-[#07050f]/95"] {
+            background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.4) 100%) !important;
+        }
+
+        /* Hardcoded dark color overrides */
+        section.bg-\[\#030206\]\/80 {
+            background-color: #F5F7FA !important;
+            /* light alternate section bg */
+        }
+
+        div.bg-\[\#030206\]\/45 {
+            background-color: rgba(255, 255, 255, 0.75) !important;
+            /* white glass card */
+        }
+
+        /* Pill badge and labels light contrast overrides */
+        span[class*="bg-primary/20"],
+        div[class*="bg-primary/20"] {
+            color: var(--color-primary) !important;
+        }
+
+        span[class*="bg-secondary/20"],
+        div[class*="bg-secondary/20"] {
+            color: var(--color-secondary) !important;
+        }
+
+        span[class*="bg-luxury-gold/20"],
+        div[class*="bg-luxury-gold/20"] {
+            color: var(--color-luxury-gold) !important;
+        }
+
+        /* Secondary outline button styles */
+        a.border-white\/10.text-white,
+        button.border-white\/10.text-white {
+            border-color: #E2E8F0 !important;
+            color: #111827 !important;
+            background-color: #FFFFFF !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        a.border-white\/10.text-white:hover,
+        button.border-white\/10.text-white:hover {
+            border-color: #CBD5E1 !important;
+            background-color: #F9FAFB !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FAFBFC;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(37, 99, 235, 0.2);
+            border-radius: 5px;
+            border: 2px solid #FAFBFC;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(37, 99, 235, 0.4);
+        }
+
+        /* Ambient Background Depth & Orbs */
+        .glow-orb {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            max-width: 600px;
+            max-height: 600px;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.035;
+            /* 3.5% opacity for alive but invisible background */
+            pointer-events: none;
+            z-index: -10;
+            will-change: transform;
+        }
+
+        .orb-1 {
+            background: radial-gradient(circle, var(--color-primary), transparent 70%);
+            top: -10%;
+            left: -10%;
+            animation: floatOrb1 35s infinite alternate ease-in-out;
+        }
+
+        .orb-2 {
+            background: radial-gradient(circle, var(--color-tertiary), transparent 70%);
+            bottom: -10%;
+            right: -10%;
+            animation: floatOrb2 45s infinite alternate ease-in-out;
+        }
+
+        .orb-3 {
+            background: radial-gradient(circle, var(--color-luxury-gold), transparent 70%);
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: floatOrb3 50s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatOrb1 {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate3d(4vw, 6vh, 0) scale(1.07);
+            }
+        }
+
+        @keyframes floatOrb2 {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1.1);
+            }
+
+            100% {
+                transform: translate3d(-5vw, -4vh, 0) scale(0.95);
+            }
+        }
+
+        @keyframes floatOrb3 {
+            0% {
+                transform: translate3d(-50%, -50%, 0) translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(-50%, -50%, 0) translate3d(-4vw, 4vh, 0);
+            }
+        }
+
+        /* Glassmorphism Styles */
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+        }
+
+        /* Premium Light Theme Image Grading */
+        img {
+            filter: brightness(1.05) contrast(1.02) saturate(0.96);
+            transition: filter 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        /* Interactive Spot-Lighting Card */
+        .interactive-card {
+            position: relative;
+            background: #FFFFFF;
+            /* White card surface */
+            border: 1px solid #E2E8F0;
+            /* Clean border */
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), scale 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.03), transparent 75%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 300ms ease;
+        }
+
+        .interactive-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: radial-gradient(350px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(37, 99, 235, 0.08), transparent 75%);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 300ms ease;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 1px;
+            border-radius: inherit;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            /* translateY(-4px) on hover */
+            border-color: var(--color-primary);
+            /* border highlight */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+            /* Soft shadow increase */
+        }
+
+        .interactive-card:hover::before,
+        .interactive-card:hover::after {
+            opacity: 1;
+        }
+
+        .interactive-card>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Premium Button Transitions & Hover Refinement */
+        button,
+        a.bg-gradient-to-r,
+        button.bg-gradient-to-r,
+        a.border-luxury-gold,
+        a.border-white\/10 {
+            transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1), background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        button:hover,
+        a.bg-gradient-to-r:hover,
+        button.bg-gradient-to-r:hover,
+        a.border-luxury-gold:hover,
+        a.border-white\/10:hover {
+            transform: scale(1.02) !important;
+            /* Scale 1.02 */
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.15), 0 4px 6px -2px rgba(37, 99, 235, 0.08) !important;
+            /* Shadow increase */
+        }
+
+        button:active,
+        a.bg-gradient-to-r:active,
+        button.bg-gradient-to-r:active {
+            transform: scale(0.98) !important;
+        }
+
+        /* Custom Cursor styles */
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: normal;
+            will-change: transform;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: var(--color-primary);
+            transform: translate(-50%, -50%);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s;
+        }
+
+        .cursor-outline {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s, background-color 0.25s;
+        }
+
+        body.cursor-hover .cursor-dot {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: var(--color-luxury-gold);
+        }
+
+        body.cursor-hover .cursor-outline {
+            transform: translate(-50%, -50%) scale(1.8);
+            border-color: rgba(37, 99, 235, 0.6);
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        /* Global mouse spotlight glow */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(350px circle at var(--global-mouse-x, 0px) var(--global-mouse-y, 0px), rgba(37, 99, 235, 0.02), transparent 75%);
+            pointer-events: none;
+            z-index: -5;
+        }
+
+        /* Text Clip Gradient for Luxury effect */
+        .luxury-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-luxury-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Reveal animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+            will-change: transform, opacity;
+        }
+
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Text Glow Utilities */
+        .luxury-gold-glow {
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+        }
+
+        .primary-glow {
+            text-shadow: 0 0 20px rgba(37, 99, 235, 0.05);
+        }
+
+        /* Category Filter Buttons styles */
+        .filter-btn {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            color: #64748B;
+            transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), color 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn:hover {
+            border-color: #CBD5E1;
+            background: #F9FAFB;
+            color: #111827;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2) !important;
+        }
+
+        /* ── Performance & GPU Acceleration ─────────────────────────── */
+        html {
+            scroll-behavior: smooth;
+        }
+        .glow-orb,
+        .interactive-card,
+        .portfolio-highlight-card,
+        .portfolio-item,
+        .glass-panel,
+        .glass-surface,
+        #custom-cursor,
+        .reveal-up {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        .glow-orb {
+            will-change: transform;
+        }
+        .interactive-card,
+        .portfolio-highlight-card,
+        .portfolio-item {
+            will-change: transform;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary overflow-x-hidden">
+    <!-- Ambient background glows -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- TopNavBar -->
+    <header class="sticky top-0 z-[100] w-full glass-surface shadow-lg shadow-black/10 backdrop-blur-md">
+        <nav
+            class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <a href="index.html"
+                class="flex items-center gap-3 font-display-lg text-headline-md font-bold text-white tracking-tighter hover:opacity-85 transition-opacity">
+                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="riolabz-logo-grad-header" x1="0" y1="0" x2="100" y2="100"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3b82f6" />
+                            <stop offset="50%" stop-color="#a855f7" />
+                            <stop offset="100%" stop-color="#fbbf24" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M 13.53,12.00 L 33.67,32.76 L 28.48,37.94 L 13.22,22.99 L 12.31,85.86 L 35.50,73.35 L 49.85,86.78 L 85.25,84.64 L 63.58,62.67 L 85.56,33.37 L 64.19,12.00 Z M 27.57,51.37 L 27.57,69.38 L 20.85,76.10 L 20.55,57.48 Z M 28.79,48.93 L 35.50,48.02 L 62.67,74.57 L 63.28,77.62 L 56.56,78.23 Z M 41.00,39.78 L 44.05,37.94 L 50.15,38.25 L 51.68,39.78 L 46.80,45.57 Z M 32.45,22.99 L 60.22,23.60 L 73.65,33.37 L 73.65,40.39 L 57.48,56.56 L 52.90,51.37 L 66.63,37.03 L 58.39,28.79 L 37.94,28.79 Z"
+                        fill="url(#riolabz-logo-grad-header)" fill-rule="evenodd" />
+                </svg>
+                <span>RIOLABZ</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="services.html">Services</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                    href="about.html">About</a>
+                <a class="font-body-md text-body-md text-primary font-bold border-b border-primary pb-1"
+                    href="portfolio.html">Portfolio</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="hidden md:block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    Get Started
+                </button>
+                <button id="mobile-menu-btn" class="block md:hidden text-white hover:text-primary transition-colors p-1"
+                    aria-label="Open menu">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative">
+        <!-- Hero Section -->
+        <section
+            class="relative pt-24 pb-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.1)_0%,_transparent_60%)] pointer-events-none">
+            </div>
+            <div class="reveal-up relative z-10" id="hero-content">
+                <span
+                    class="font-label-md text-label-md text-brand-gold tracking-widest uppercase mb-4 block font-bold">Our
+                    Case Studies</span>
+                <h1
+                    class="font-display-lg text-headline-lg-mobile md:text-display-lg text-white mb-6 max-w-4xl mx-auto leading-tight font-extrabold tracking-tight">
+                    Engineering Solutions with <span class="luxury-gradient-text font-extrabold">Measurable
+                        Impact</span>.
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8 leading-relaxed">
+                    Explore a selection of our high-concurrency fintech platforms, speed-optimized commerce storefronts,
+                    robust cloud migrations, and custom IoT architectures.
+                </p>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="py-4 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto reveal-up">
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <button
+                    class="filter-btn active px-6 py-2.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant font-bold"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn px-6 py-2.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant font-bold"
+                    data-filter="fintech">Fintech</button>
+                <button
+                    class="filter-btn px-6 py-2.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant font-bold"
+                    data-filter="saas">SaaS &amp; AI</button>
+                <button
+                    class="filter-btn px-6 py-2.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant font-bold"
+                    data-filter="iot">IoT &amp; Tech</button>
+                <button
+                    class="filter-btn px-6 py-2.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant font-bold"
+                    data-filter="commerce">Commerce</button>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section class="pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div id="portfolio-grid"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter transition-all duration-500">
+                <!-- Project 1 -->
+                <div class="portfolio-item interactive-card p-6 flex flex-col justify-between" data-category="fintech">
+                    <div class="group relative overflow-hidden rounded-xl aspect-[4/3] mb-6">
+                        <img loading="lazy" decoding="async" alt="Globo Pay Gateway"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuArMB4Doidf78cO_gpXWNxEvKRCLMKweORWWSV-ZiBBhw0Kjio9-BtYwITKtT2u87Ji9q1e5dmWRagJHK-Oe_Fmo50sfk0woJ5sbs8qV3eU-rMFjjRLLwkoFyC32H97B8jPM7BzuNs9ZqgsAh0TfOfJL5M3dSSQuFdudz_LWEDlI_GraZpCwYIyK4iefzKs02OcPBGsrGBRPi8y5WKzBZna-xQ5FMygGoKdjybdz-V3a1IMcpMrCIEmEO1P89o-ZxJpd7zs-oJyTao" />
+                    </div>
+                    <div>
+                        <span
+                            class="text-primary font-label-md font-bold uppercase mb-2 block text-xs tracking-wider">Fintech</span>
+                        <h3 class="font-headline-md text-headline-md text-white mb-3">Globo Pay Gateway</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 font-bold text-luxury-gold">
+                            Re-engineered transaction engine handling $1.2B annually at 60ms latency.</p>
+                        <div class="space-y-3 mb-6 text-xs text-on-surface-variant/80 border-t border-white/5 pt-4">
+                            <div><strong class="text-white">Challenge:</strong> Legacy Ruby servers suffered from
+                                database bottlenecks and transaction drops during peak hours.</div>
+                            <div><strong class="text-white">Solution:</strong> Migrated to Node.js microservices on AWS
+                                EKS with Redis caching and PostgreSQL partitioning.</div>
+                            <div><strong class="text-white">Impact:</strong> Dropped transaction errors to 0% and
+                                reduced cloud hosting costs by 40%.</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">Node.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">AWS
+                                EKS</span>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item interactive-card p-6 flex flex-col justify-between" data-category="commerce">
+                    <div class="group relative overflow-hidden rounded-xl aspect-[4/3] mb-6">
+                        <img loading="lazy" decoding="async" alt="Aura Headless Hub"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaiE9mbGvesBKZ_lzTNRfImxprRJYeQPv_clLe9nX2GtLBi0r0eOMx4IVL87ogYkRf56LAuq6sJXqIOUwFSwlfN0tt605fx9bRLJTubgfPJ0za3cA7VyqhqMj7DC8UUcoKcvOXcHNnuSs894bUoYuVQDErVraFIkHrqC4Y1wCL0SK5rdmrfkY9Gjud-52XhigxZTZKtBj1c4bMgP-KR-MrY80vLUYXiMZhg3KfB4010ijbFaM5idcRUK4xWsA6-3C1t-wtGEPtGx4" />
+                    </div>
+                    <div>
+                        <span
+                            class="text-luxury-gold font-label-md font-bold uppercase mb-2 block text-xs tracking-wider">Commerce</span>
+                        <h3 class="font-headline-md text-headline-md text-white mb-3">Aura Headless Hub</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 font-bold text-luxury-gold">
+                            Sub-second Shopify Plus storefront migration driving a 35% conversion lift.</p>
+                        <div class="space-y-3 mb-6 text-xs text-on-surface-variant/80 border-t border-white/5 pt-4">
+                            <div><strong class="text-white">Challenge:</strong> A luxury retail site struggled with slow
+                                catalog loading and a rigid legacy monolithic cart.</div>
+                            <div><strong class="text-white">Solution:</strong> Implemented headless architecture using
+                                Next.js for the frontend and Shopify Plus for the checkout engine, connected via GraphQL
+                                APIs.</div>
+                            <div><strong class="text-white">Impact:</strong> Mobile Lighthouse score rose to 99, and
+                                cart abandonment dropped by 18%.</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">Next.js</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">GraphQL</span>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold hover:bg-luxury-gold hover:text-black transition-all duration-300">
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item interactive-card p-6 flex flex-col justify-between" data-category="saas">
+                    <div class="group relative overflow-hidden rounded-xl aspect-[4/3] mb-6">
+                        <img loading="lazy" decoding="async" alt="Synapse Enterprise"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_7ljjYSF3aq8eoT-ntboy45yjLD1CbxJfhPZZHj_gHf6InJ3kaMRzwxe3YMf3z0pYrY6l3pAiWRMWgMBtsF47drPKrGjcW8zkcjaOjTQDlqb8zcXT1qNap4Hrf5s7SRjEtGec0R4nQPk9SnunC-r9FUvALQpexcxZTkmlrOfZRh_CF29hFfbDZ0kKq082Tfe-vdyzp-3idZ7k37zvUd94RAHbjfeQuzWY4uhyB-c1Hh4F18NQ2xYGtGbpMNjJVY-7oqDqqKMzXik" />
+                    </div>
+                    <div>
+                        <span
+                            class="text-secondary font-label-md font-bold uppercase mb-2 block text-xs tracking-wider">SaaS
+                            &amp; AI</span>
+                        <h3 class="font-headline-md text-headline-md text-white mb-3">Synapse IoT Fleet Tracker</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 font-bold text-luxury-gold">
+                            Real-time telemetry tracking and routing engine for 15,000 active carrier trucks.</p>
+                        <div class="space-y-3 mb-6 text-xs text-on-surface-variant/80 border-t border-white/5 pt-4">
+                            <div><strong class="text-white">Challenge:</strong> Stream processing of millions of
+                                concurrent GPS records from shipping fleets caused system lag.</div>
+                            <div><strong class="text-white">Solution:</strong> Developed a high-concurrency ingestion
+                                API in Go and an analytics routing engine in Rust, deploying with Docker containers on
+                                GCP.</div>
+                            <div><strong class="text-white">Impact:</strong> Achieved sub-50ms data processing speeds
+                                and reduced fuel routing overhead by 12%.</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">Go
+                                / Rust</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">GCP</span>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full border border-secondary/20 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all duration-300">
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item interactive-card p-6 flex flex-col justify-between" data-category="iot">
+                    <div class="group relative overflow-hidden rounded-xl aspect-[4/3] mb-6">
+                        <img loading="lazy" decoding="async" alt="Veloce IoT Suite"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXxQwpCeoxVifHz0g7_S21urqLlT3ZOJVu_Kv5yrGM8cYfTi1IoVAGQZxskYsJBjIJ9OdFsrURZ1GxUSddEWYlSLE3SDAu3CB2sFyA3FyPDeFfFMMqmR4MX7RLObDXGOdP-7G6aeWh_1d6fpS74275YjLnXru0lUZxB1ZLzEE7_A2r4S6xIAhLFVYPRdmTNOWKxAdWfjArLpqamE98MvF-8RpDMLMAA2aYy2lJDZC5Bl02tU20S-HQUgPXCy9BNva8g7zAhRy87E4" />
+                    </div>
+                    <div>
+                        <span
+                            class="text-brand-gold font-label-md font-bold uppercase mb-2 block text-xs tracking-wider">IoT
+                            &amp; Tech</span>
+                        <h3 class="font-headline-md text-headline-md text-white mb-3">Veloce Smart Charging</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 font-bold text-luxury-gold">
+                            Telemetry synchronization dashboard and secure OTA updates for EV fleet stations.</p>
+                        <div class="space-y-3 mb-6 text-xs text-on-surface-variant/80 border-t border-white/5 pt-4">
+                            <div><strong class="text-white">Challenge:</strong> Client needed to monitor energy levels
+                                and deploy firmware updates securely to 8,000 smart charge points.</div>
+                            <div><strong class="text-white">Solution:</strong> Created an encrypted WebRTC telemetry
+                                interface and integrated secure public-key cryptography workflows in Go.</div>
+                            <div><strong class="text-white">Impact:</strong> Achieved zero update failures and instant
+                                grid load adjustments.</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">Go</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">WebRTC</span>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-item interactive-card p-6 flex flex-col justify-between" data-category="saas">
+                    <div class="group relative overflow-hidden rounded-xl aspect-[4/3] mb-6">
+                        <img loading="lazy" decoding="async" alt="Omni Health Portal"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpBFSfoSp8EoAdRKV6E03pnSFL0lOa7DOT0t0h5cahLnjIltq8AocecVuf1WzNJMUbDaUaKbjpKLf_cjdCdeDJCzihgiVX8TCVRaKVPrE3DAa6ptotdGJCIANXd9xqGNa2PfbcfJ4-E3cssr_VaO8tRGoxXs08W-d-FwfliMO4QA-Pzb6GnqdJK-0ma56BTQx8If6fhr-K_-Gmr2BHj0kNvkI78WYloL0XvvqBtjdOmnZGQf9zFvNF6USMUmh_Ad0zYrrApclfbWE" />
+                    </div>
+                    <div>
+                        <span
+                            class="text-tertiary font-label-md font-bold uppercase mb-2 block text-xs tracking-wider">SaaS
+                            &amp; AI</span>
+                        <h3 class="font-headline-md text-headline-md text-white mb-3">Omni MedTech Portal</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 font-bold text-luxury-gold">
+                            HIPAA-compliant client virtual care app with secure video and instant health charts.</p>
+                        <div class="space-y-3 mb-6 text-xs text-on-surface-variant/80 border-t border-white/5 pt-4">
+                            <div><strong class="text-white">Challenge:</strong> Building a virtual care platform
+                                complying with HIPAA guidelines while maintaining sub-second streaming load speeds.
+                            </div>
+                            <div><strong class="text-white">Solution:</strong> Designed an AWS Serverless backend with
+                                encrypted DynamoDB storage and custom tokenized WebRTC security layers.</div>
+                            <div><strong class="text-white">Impact:</strong> Onboarded 150,000 patients with a 99.99%
+                                system availability rate.</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">TypeScript</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">AWS
+                                Lambda</span>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full border border-tertiary/20 flex items-center justify-center text-tertiary hover:bg-tertiary hover:text-white transition-all duration-300">
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-item interactive-card p-6 flex flex-col justify-between" data-category="fintech">
+                    <div class="group relative overflow-hidden rounded-xl aspect-[4/3] mb-6">
+                        <img loading="lazy" decoding="async" alt="Apex Crypto Exchange"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx690bPRbPObDnXwpbU-9SV4V0rGUAsGzf5cBXDZ7i-NlHkm7pLwfy-12ifAByTONWU3NMxe3mqMHlgz5eYKpMJbW4xsJgd0-fBcG6UlfFgxJlQnz-oZGq4WLHmififeKoaoAv5WbwB05pzeuY_3XL-T7S7Grx-IokFShjYIPxox-XVIXpv-UQ_VkAAhnHo-dyt86v2em1TmLt1phKJ1Gz2OGbwhfQNcfHMu5RvolUHVXPtdpQMa7bfOK21TgR6E_1cDRn7eV52J4" />
+                    </div>
+                    <div>
+                        <span
+                            class="text-primary font-label-md font-bold uppercase mb-2 block text-xs tracking-wider">Fintech</span>
+                        <h3 class="font-headline-md text-headline-md text-white mb-3">Apex Web3 Dashboard</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 font-bold text-luxury-gold">
+                            Sub-millisecond cryptocurrency trading dashboard with market liquidity routes.</p>
+                        <div class="space-y-3 mb-6 text-xs text-on-surface-variant/80 border-t border-white/5 pt-4">
+                            <div><strong class="text-white">Challenge:</strong> Legacy cryptocurrency transaction
+                                systems had high slip rates during volatile market spikes.</div>
+                            <div><strong class="text-white">Solution:</strong> Designed React frontend connected via
+                                WebSocket streams to a NestJS order router, supporting automated slippage protection.
+                            </div>
+                            <div><strong class="text-white">Impact:</strong> Order execution dropped below 15ms,
+                                eliminating trade slippage errors.</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">React
+                                / NestJS</span>
+                            <span
+                                class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-semibold text-on-surface-variant">WebSockets</span>
+                        </div>
+                        <button
+                            class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="cta-section"
+            class="py-12 md:py-16 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center relative overflow-hidden reveal-up">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(168,85,247,0.08),_transparent_60%)] pointer-events-none">
+            </div>
+            <div
+                class="glass-panel p-10 md:p-20 rounded-3xl border border-white/5 relative z-10 max-w-4xl mx-auto shadow-2xl">
+                <h2 class="font-headline-lg text-headline-lg text-white mb-6">Ready to Build Your Digital Masterpiece?
+                </h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto mb-8 leading-relaxed">
+                    Connect with our Infopark Kochi engineering team and launch your next high-performance system today.
+                </p>
+                <!-- Inline Lead Generation Form -->
+                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6"
+                    onsubmit="event.preventDefault(); alert('Thank you! Our engineering lead will contact you within 2 hours to set up your technical scoping call.');">
+                    <input type="email" required placeholder="Enter your enterprise email"
+                        class="px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-primary flex-grow text-sm" />
+                    <button type="submit"
+                        class="px-8 py-3.5 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-bold text-sm uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        Book Tech Call
+                    </button>
+                </form>
+                <!-- Confidence Builders -->
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-on-surface-variant/80">
+                    <span class="flex items-center gap-1.5"><span
+                            class="material-symbols-outlined text-sm text-primary">check_circle</span> NDA signed in 2
+                        hours</span>
+                    <span class="flex items-center gap-1.5"><span
+                            class="material-symbols-outlined text-sm text-secondary">check_circle</span> Speak with an
+                        Architect</span>
+                    <span class="flex items-center gap-1.5"><span
+                            class="material-symbols-outlined text-sm text-luxury-gold">check_circle</span> Vetted Kochi
+                        team</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-surface border-t border-white/5 mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+            <div class="col-span-1 md:col-span-1">
+                <div
+                    class="flex items-center gap-3 font-display-lg text-headline-md font-bold text-white mb-4 tracking-tighter">
+                    <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="riolabz-logo-grad-footer" x1="0" y1="0" x2="100" y2="100"
+                                gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="50%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#fbbf24" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M 13.53,12.00 L 33.67,32.76 L 28.48,37.94 L 13.22,22.99 L 12.31,85.86 L 35.50,73.35 L 49.85,86.78 L 85.25,84.64 L 63.58,62.67 L 85.56,33.37 L 64.19,12.00 Z M 27.57,51.37 L 27.57,69.38 L 20.85,76.10 L 20.55,57.48 Z M 28.79,48.93 L 35.50,48.02 L 62.67,74.57 L 63.28,77.62 L 56.56,78.23 Z M 41.00,39.78 L 44.05,37.94 L 50.15,38.25 L 51.68,39.78 L 46.80,45.57 Z M 32.45,22.99 L 60.22,23.60 L 73.65,33.37 L 73.65,40.39 L 57.48,56.56 L 52.90,51.37 L 66.63,37.03 L 58.39,28.79 L 37.94,28.79 Z"
+                            fill="url(#riolabz-logo-grad-footer)" fill-rule="evenodd" />
+                    </svg>
+                    <span>RIOLABZ</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs leading-relaxed mb-6">
+                    Architecting zero-debt software systems and high-concurrency web platforms for global enterprises.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span
+                        class="px-2.5 py-1 text-[9px] font-bold text-on-surface-variant border border-white/10 rounded uppercase tracking-wider bg-white/5">ISO
+                        27001</span>
+                    <span
+                        class="px-2.5 py-1 text-[9px] font-bold text-on-surface-variant border border-white/10 rounded uppercase tracking-wider bg-white/5">SOC
+                        2 Ready</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-label-md text-label-md text-primary uppercase mb-4 font-bold tracking-wider">Solutions
+                </h4>
+                <ul class="space-y-3">
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="services.html">Enterprise Web Engineering</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="services.html">Mobile Platforms</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="services.html">Headless Commerce Storefronts</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="services.html">Cloud Operations &amp; DevOps</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-label-md text-label-md text-primary uppercase mb-4 font-bold tracking-wider">Company
+                </h4>
+                <ul class="space-y-3">
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="about.html">Our Story &amp; Delivery Model</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="portfolio.html">Case Studies Portfolio</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="about.html#culture">Engineering Culture</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+                            href="#">Careers (We're Hiring)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-label-md text-label-md text-primary uppercase mb-4 font-bold tracking-wider">Contact
+                    &amp; Connect</h4>
+                <ul class="space-y-3 text-body-sm text-on-surface-variant">
+                    <li><span class="font-bold text-white">Inquiries:</span> <a href="mailto:hello@riolabz.com"
+                            class="hover:text-primary transition-colors">hello@riolabz.com</a></li>
+                    <li><span class="font-bold text-white">Office:</span> Infopark Kochi, Kerala, India</li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors block"
+                            href="#">LinkedIn Profile</a></li>
+                    <li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors block"
+                            href="#">Twitter (X) Updates</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-container-max mx-auto px-margin-desktop py-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 Riolabz Technologies. All rights
+                reserved.</p>
+            <div class="flex gap-8">
+                <a class="text-luxury-gold font-label-md text-xs uppercase tracking-wider font-bold" href="#">Gold
+                    Standard Engineering</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer"
+        class="fixed inset-y-0 right-0 z-[200] w-full max-w-sm glass-panel border-l border-white/10 shadow-2xl p-8 flex flex-col gap-8 translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-3 font-display-lg text-headline-md font-bold text-white tracking-tighter">
+                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="riolabz-logo-grad-drawer" x1="0" y1="0" x2="100" y2="100"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3b82f6" />
+                            <stop offset="50%" stop-color="#a855f7" />
+                            <stop offset="100%" stop-color="#fbbf24" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M 13.53,12.00 L 33.67,32.76 L 28.48,37.94 L 13.22,22.99 L 12.31,85.86 L 35.50,73.35 L 49.85,86.78 L 85.25,84.64 L 63.58,62.67 L 85.56,33.37 L 64.19,12.00 Z M 27.57,51.37 L 27.57,69.38 L 20.85,76.10 L 20.55,57.48 Z M 28.79,48.93 L 35.50,48.02 L 62.67,74.57 L 63.28,77.62 L 56.56,78.23 Z M 41.00,39.78 L 44.05,37.94 L 50.15,38.25 L 51.68,39.78 L 46.80,45.57 Z M 32.45,22.99 L 60.22,23.60 L 73.65,33.37 L 73.65,40.39 L 57.48,56.56 L 52.90,51.37 L 66.63,37.03 L 58.39,28.79 L 37.94,28.79 Z"
+                        fill="url(#riolabz-logo-grad-drawer)" fill-rule="evenodd" />
+                </svg>
+                <span>RIOLABZ</span>
+            </div>
+            <button id="mobile-menu-close" class="text-white hover:text-primary transition-colors p-1"
+                aria-label="Close menu">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 text-lg font-semibold mt-8">
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors py-2 border-b border-white/5"
+                href="services.html">Services</a>
+            <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors py-2 border-b border-white/5"
+                href="about.html">About</a>
+            <a class="font-body-md text-primary hover:text-primary transition-colors py-2 border-b border-white/5"
+                href="portfolio.html">Portfolio</a>
+        </div>
+        <div class="mt-auto">
+            <button
+                class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-label-md text-label-md uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                Get Started
+            </button>
+        </div>
+    </div>
+
+    <!-- Custom Centered Cursor -->
+    <div id="custom-cursor" class="hidden lg:block">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reveal elements on scroll
+            const observerOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px -40px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+            // Card hover coordinates tracker with layout stability & cached bounding rect
+            document.querySelectorAll('.interactive-card').forEach(card => {
+                let rect = null;
+                card.addEventListener('mouseenter', () => {
+                    rect = card.getBoundingClientRect();
+                });
+                card.addEventListener('mouseleave', () => {
+                    rect = null;
+                });
+                card.addEventListener('mousemove', (e) => {
+                    if (!rect) rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                }, { passive: true });
+            });
+
+            // Mobile Menu Drawer Controls
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('mobile-menu-close');
+            const drawer = document.getElementById('mobile-drawer');
+
+            if (menuBtn && drawer) {
+                menuBtn.addEventListener('click', () => {
+                    drawer.classList.remove('translate-x-full');
+                });
+            }
+            if (closeBtn && drawer) {
+                closeBtn.addEventListener('click', () => {
+                    drawer.classList.add('translate-x-full');
+                });
+            }
+
+            // Custom Centered Cursor & Global Mouse Glow (rAF-throttled, passive mousemove)
+            const cursor = document.getElementById('custom-cursor');
+
+            if (cursor) {
+                let mouseX = 0;
+                let mouseY = 0;
+                let cursorRafId = null;
+                
+                const updateCursor = () => {
+                    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+                    document.body.style.setProperty('--global-mouse-x', `${mouseX}px`);
+                    document.body.style.setProperty('--global-mouse-y', `${mouseY}px`);
+                    cursorRafId = null;
+                };
+                
+                window.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    if (!cursorRafId) {
+                        cursorRafId = requestAnimationFrame(updateCursor);
+                    }
+                }, { passive: true });
+
+                // Hover states
+                const interactiveSelectors = 'a, button, input, textarea, select, .interactive-card, [role="button"], .cursor-pointer-hover';
+                document.querySelectorAll(interactiveSelectors).forEach(el => {
+                    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'), { passive: true });
+                    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'), { passive: true });
+                });
+            }
+
+            // Smooth parallax scroll on hero using requestAnimationFrame and passive scroll listener
+            let scrollY = window.pageYOffset;
+            let ticking = false;
+
+            const updateHeroParallax = () => {
+                const heroContent = document.getElementById('hero-content');
+                if (heroContent && window.innerWidth > 768) {
+                    heroContent.style.transform = `translate3d(0, ${scrollY * 0.12}px, 0)`;
+                    heroContent.style.opacity = Math.max(0, 1 - (scrollY / 600));
+                }
+                ticking = false;
+            };
+
+            window.addEventListener('scroll', () => {
+                scrollY = window.pageYOffset;
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeroParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Filter Portfolio Logic with optimized double-rAF reflow transitions
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+
+                        if (filterValue === 'all' || itemCategory === filterValue) {
+                            item.style.display = 'flex';
+                            window.requestAnimationFrame(() => {
+                                window.requestAnimationFrame(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translate3d(0, 0, 0) scale(1)';
+                                });
+                            });
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translate3d(0, 12px, 0) scale(0.95)';
+
+                            const handleTransitionEnd = (e) => {
+                                if (e.propertyName === 'opacity' || e.propertyName === 'transform') {
+                                    if (item.style.opacity === '0') {
+                                        item.style.display = 'none';
+                                    }
+                                    item.removeEventListener('transitionend', handleTransitionEnd);
+                                }
+                            };
+                            item.addEventListener('transitionend', handleTransitionEnd);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
